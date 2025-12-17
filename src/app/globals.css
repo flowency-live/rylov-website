@@ -1,26 +1,71 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-background: #f5f0e8;
+    --color-foreground: #171717;
+    --color-muted: #737373;
+    --color-border: #d4d4d4;
+    --color-card: #faf8f5;
+    --color-primary: #722F37;
+    --color-secondary: #C9A227;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-beige text-grey-900 antialiased;
+  }
+
+  ::selection {
+    @apply bg-burgundy text-beige-50;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-grey-900 uppercase;
+  }
+
+  .section-subtitle {
+    @apply text-sm md:text-base font-body uppercase tracking-[0.2em] text-burgundy font-medium;
+  }
+
+  .body-text {
+    @apply text-base md:text-lg font-body text-grey-600 leading-relaxed;
+  }
+
+  .nav-link {
+    @apply text-grey-600 hover:text-burgundy transition-colors font-body text-sm uppercase tracking-wider;
+  }
+
+  .accent-line {
+    @apply w-16 h-[3px] bg-burgundy;
+  }
+
+  .accent-line-gold {
+    @apply w-16 h-[3px] bg-gold;
+  }
+
+  .btn-primary {
+    @apply inline-block bg-burgundy text-beige-50 px-8 py-4 font-display text-lg tracking-wide uppercase hover:bg-burgundy-light transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply inline-block bg-grey-900 text-beige-50 px-8 py-4 font-display text-lg tracking-wide uppercase hover:bg-grey-800 transition-colors duration-200;
+  }
+
+  .card {
+    @apply bg-beige-50 border-l-[3px] border-burgundy p-6;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }

@@ -1,65 +1,207 @@
 import Image from "next/image";
+import Link from "next/link";
+
+const services = [
+  {
+    title: "Remote Recording",
+    description: "Professional drum tracks delivered to your inbox. No studio booking, no time constraints.",
+    href: "/recording",
+  },
+  {
+    title: "Music Transcriptions",
+    description: "Accurate drum notation for any song. Learn your favourite tracks note-for-note.",
+    href: "/transcriptions",
+  },
+  {
+    title: "Video Tutorials",
+    description: "Drum covers, technique breakdowns, and educational content for all levels.",
+    href: "/videos",
+  },
+];
+
+const credits = [
+  "Matt Lawrence (Amy Winehouse, Adele, Lady Gaga, George Michael, Beyonce, Kylie Minogue, Bjork)",
+  "Dana McKeon",
+  "Izzy Thomas",
+  "Nefera",
+  "Shapla Salique",
+  "Wyse",
+  "Jess Edie",
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/channels4_banner.jpg"
+            alt="Rhyan Lovell"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-grey-900/90 via-grey-900/70 to-grey-900/40" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24">
+          <div className="max-w-2xl">
+            <p className="section-subtitle mb-4">Session Drummer</p>
+            <h1 className="font-display text-6xl md:text-7xl lg:text-8xl tracking-tight text-beige-50 uppercase leading-none">
+              RHYAN
+              <br />
+              <span className="text-burgundy">LOVELL</span>
+            </h1>
+
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-beige-200">
+              <span>Remote Recording</span>
+              <span className="hidden sm:block text-burgundy">/</span>
+              <span>Music Transcriptions</span>
+              <span className="hidden sm:block text-burgundy">/</span>
+              <span>Remote Lessons</span>
+            </div>
+
+            <p className="mt-4 text-sm text-beige-300 uppercase tracking-widest">
+              Liverpool / Manchester, UK
+            </p>
+
+            <div className="mt-12 flex flex-wrap gap-4">
+              <Link href="/recording" className="btn-primary">
+                Start a Project
+              </Link>
+              <Link href="/about" className="btn-secondary">
+                Learn More
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+          <div className="w-[2px] h-16 bg-gradient-to-b from-burgundy to-transparent" />
+        </div>
+      </section>
+
+      {/* Services Overview */}
+      <section className="py-24 bg-beige">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-16">
+            <div className="accent-line mb-6" />
+            <h2 className="section-title">Services</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <Link
+                key={service.title}
+                href={service.href}
+                className="group block bg-beige-50 p-8 border-t-[3px] border-burgundy hover:border-gold transition-colors"
+              >
+                <span className="font-display text-5xl text-grey-200 group-hover:text-burgundy transition-colors">
+                  0{index + 1}
+                </span>
+                <h3 className="font-display text-2xl text-grey-900 mt-4 mb-3 tracking-wide uppercase">
+                  {service.title}
+                </h3>
+                <p className="text-grey-600">{service.description}</p>
+                <div className="mt-6 flex items-center gap-2 text-burgundy font-medium uppercase text-sm tracking-wider group-hover:gap-4 transition-all">
+                  <span>Learn More</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="square" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quick About */}
+      <section className="py-24 bg-grey-900 text-beige-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="accent-line-gold mb-6" />
+              <h2 className="section-title text-beige-50 mb-8">About</h2>
+              <p className="body-text text-grey-300 mb-6">
+                Based in Cheshire, UK, I&apos;m a session drummer specializing in remote recording
+                and music transcriptions. With a versatile style honed across multiple genres,
+                I bring professional-grade drum tracks to artists and producers worldwide.
+              </p>
+              <p className="body-text text-grey-300 mb-8">
+                Working from my fully-equipped home studio, I offer flexible scheduling with
+                no time constraints - allowing me to deliver precisely crafted parts that serve
+                your music perfectly.
+              </p>
+
+              <div className="border-t border-grey-700 pt-8">
+                <h3 className="font-display text-xl text-gold mb-4 tracking-wide">
+                  CREDITS INCLUDE
+                </h3>
+                <ul className="space-y-2">
+                  {credits.slice(0, 4).map((credit, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="w-2 h-2 bg-burgundy mt-2 flex-shrink-0" />
+                      <span className="text-grey-300 text-sm">
+                        {credit.includes("Matt Lawrence") ? (
+                          <>
+                            <span className="text-gold">Grammy Award-winning producer</span>
+                            <br />
+                            {credit}
+                          </>
+                        ) : (
+                          credit
+                        )}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-2 mt-6 text-gold hover:text-gold-light transition-colors uppercase text-sm tracking-wider font-medium"
+                >
+                  <span>Full Bio</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="square" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+
+            <div className="relative">
+              <Image
+                src="/images/Ryhan1.jpg"
+                alt="Rhyan Lovell"
+                width={600}
+                height={700}
+                className="w-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gold" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 bg-burgundy">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="font-display text-4xl md:text-5xl text-beige-50 mb-6 tracking-tight uppercase">
+            Ready to Start Your Project?
+          </h2>
+          <p className="text-beige-200 text-lg mb-8 max-w-2xl mx-auto">
+            Get professional drum tracks delivered to your inbox. No studio booking required.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/contact"
+            className="inline-block bg-beige-50 text-grey-900 px-8 py-4 font-display text-lg tracking-wide uppercase hover:bg-gold transition-colors"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            Get in Touch
+          </Link>
         </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }

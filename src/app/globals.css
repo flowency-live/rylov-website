@@ -68,4 +68,23 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .animate-video-fade {
+    animation: video-fade 10s ease-in-out infinite;
+  }
+}
+
+@keyframes video-fade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

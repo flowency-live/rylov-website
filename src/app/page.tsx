@@ -34,17 +34,19 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-end md:items-center pb-24 md:pb-0">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/channels4_banner.jpg"
-            alt="Rhyan Lovell"
-            fill
-            className="object-cover object-top md:object-center"
-            priority
-          />
-          {/* Mobile: stronger bottom gradient, Desktop: side gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-grey-900 via-grey-900/80 to-grey-900/20 md:bg-gradient-to-r md:from-grey-900/90 md:via-grey-900/70 md:to-grey-900/40" />
+        {/* Background Video */}
+        <div className="absolute inset-0 overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover animate-video-fade"
+          >
+            <source src="/images/RyhanPlayingHero.mp4" type="video/mp4" />
+          </video>
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-grey-900 via-grey-900/60 to-grey-900/30 md:bg-gradient-to-r md:from-grey-900/90 md:via-grey-900/50 md:to-grey-900/30" />
         </div>
 
         {/* Content */}

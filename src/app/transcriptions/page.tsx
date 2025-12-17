@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -36,23 +37,84 @@ const services = [
   },
 ];
 
+// Grid items - 6 columns x 6 rows to fill space
+const gridImages = [
+  1, 2, 3, 4, 1, 2,
+  3, 4, 1, 2, 3, 4,
+  1, 2, 3, 4, 1, 2,
+  3, 4, 1, 2, 3, 4,
+  1, 2, 3, 4, 1, 2,
+  3, 4, 1, 2, 3, 4,
+];
+
 export default function TranscriptionsPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="pt-32 pb-16 bg-beige">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="accent-line mb-6" />
-          <h1 className="section-title">Transcriptions</h1>
-          <p className="body-text mt-6 max-w-2xl">
-            Accurate drum notation for any song. Whether you want to learn your favourite track
-            or need educational materials, I provide detailed transcriptions to help you master the drums.
-          </p>
+      {/* Hero - Isometric grid background */}
+      <section className="relative min-h-screen overflow-hidden bg-grey-900">
+        {/* Isometric grid */}
+        <div
+          className="absolute inset-0 overflow-hidden"
+        >
+          <div
+            className="absolute"
+            style={{
+              transform: 'rotate(25deg)',
+              transformOrigin: 'center center',
+              top: '-80%',
+              left: '-30%',
+              width: '180%',
+              height: '280%',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(10, 312px)',
+              gap: '24px',
+            }}
+          >
+            {[...Array(100)].map((_, idx) => (
+              <div
+                key={idx}
+                className="rounded-sm overflow-hidden opacity-80"
+                style={{ width: '312px', height: '442px' }}
+              >
+                <Image
+                  src={`/images/${(idx % 4) + 1}.png`}
+                  alt=""
+                  width={312}
+                  height={442}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-grey-900 via-grey-900/80 to-grey-900/20" />
+
+        {/* Content */}
+        <div className="relative z-10 min-h-screen flex items-center">
+          <div className="max-w-7xl mx-auto px-6 w-full">
+            <div className="max-w-xl">
+              <div className="accent-line-gold mb-6" />
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight text-beige-50 uppercase leading-none">
+                Transcriptions
+              </h1>
+              <p className="mt-6 text-base md:text-lg text-grey-300 leading-relaxed">
+                Accurate drum notation for any song. Whether you want to learn your favourite track
+                or need educational materials, I provide detailed transcriptions to help you master the drums.
+              </p>
+              <div className="mt-8">
+                <Link href="/contact" className="btn-primary">
+                  Request a Transcription
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Services */}
-      <section className="py-16 bg-beige">
+      <section className="py-20 bg-beige">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service) => (
@@ -71,8 +133,30 @@ export default function TranscriptionsPage() {
         </div>
       </section>
 
-      {/* Details */}
-      <section className="py-16 bg-grey-900 text-beige-50">
+      {/* Sample Work */}
+      <section className="py-20 bg-grey-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="font-display text-2xl text-grey-900 mb-8 tracking-wide">
+            SAMPLE WORK
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[1, 2, 3, 4].map((num) => (
+              <div key={num} className="bg-white shadow-lg rounded overflow-hidden">
+                <Image
+                  src={`/images/${num}.png`}
+                  alt={`Transcription sample ${num}`}
+                  width={400}
+                  height={550}
+                  className="w-full h-auto"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How it Works */}
+      <section className="py-20 bg-grey-900 text-beige-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <div className="accent-line-gold mb-6" />
@@ -114,7 +198,7 @@ export default function TranscriptionsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-burgundy">
+      <section className="py-20 bg-burgundy">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-display text-3xl md:text-4xl text-beige-50 mb-6 tracking-tight uppercase">
             Need a Transcription?

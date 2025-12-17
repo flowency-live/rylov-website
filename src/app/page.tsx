@@ -33,30 +33,31 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center">
+      <section className="relative min-h-screen flex items-end md:items-center pb-24 md:pb-0">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
             src="/images/channels4_banner.jpg"
             alt="Rhyan Lovell"
             fill
-            className="object-cover object-center"
+            className="object-cover object-top md:object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-grey-900/90 via-grey-900/70 to-grey-900/40" />
+          {/* Mobile: stronger bottom gradient, Desktop: side gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-grey-900 via-grey-900/80 to-grey-900/20 md:bg-gradient-to-r md:from-grey-900/90 md:via-grey-900/70 md:to-grey-900/40" />
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 md:pt-24 w-full">
           <div className="max-w-2xl">
-            <p className="section-subtitle mb-4">Session Drummer</p>
-            <h1 className="font-display text-6xl md:text-7xl lg:text-8xl tracking-tight text-beige-50 uppercase leading-none">
+            <p className="section-subtitle mb-2 md:mb-4">Session Drummer</p>
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-beige-50 uppercase leading-none">
               RHYAN
               <br />
               <span className="text-burgundy">LOVELL</span>
             </h1>
 
-            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-beige-200">
+            <div className="mt-6 md:mt-8 flex flex-col sm:flex-row flex-wrap gap-x-8 gap-y-1 sm:gap-y-2 text-beige-200 text-sm sm:text-base">
               <span>Remote Recording</span>
               <span className="hidden sm:block text-burgundy">/</span>
               <span>Music Transcriptions</span>
@@ -64,23 +65,23 @@ export default function Home() {
               <span>Remote Lessons</span>
             </div>
 
-            <p className="mt-4 text-sm text-beige-300 uppercase tracking-widest">
+            <p className="mt-3 md:mt-4 text-xs sm:text-sm text-beige-300 uppercase tracking-widest">
               Liverpool / Manchester, UK
             </p>
 
-            <div className="mt-12 flex flex-wrap gap-4">
-              <Link href="/recording" className="btn-primary">
+            <div className="mt-8 md:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Link href="/recording" className="btn-primary text-center">
                 Start a Project
               </Link>
-              <Link href="/about" className="btn-secondary">
+              <Link href="/about" className="btn-secondary text-center">
                 Learn More
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        {/* Scroll indicator - hidden on mobile */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
           <div className="w-[2px] h-16 bg-gradient-to-b from-burgundy to-transparent" />
         </div>
       </section>

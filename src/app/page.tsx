@@ -46,17 +46,17 @@ export default function Home() {
             <source src="/images/RyhanPlayingHero.mp4" type="video/mp4" />
           </video>
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-grey-900 via-grey-900/60 to-grey-900/30 md:bg-gradient-to-r md:from-grey-900/90 md:via-grey-900/50 md:to-grey-900/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-grey-900 via-grey-900/70 to-grey-900/40 md:bg-gradient-to-r md:from-grey-900 md:via-grey-900/70 md:to-grey-900/30" />
         </div>
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 md:pt-24 w-full">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}>
             <p className="section-subtitle mb-2 md:mb-4">Session Drummer</p>
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-beige-50 uppercase leading-none">
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-beige-50 uppercase leading-none drop-shadow-lg">
               RHYAN
               <br />
-              <span className="text-burgundy">LOVELL</span>
+              <span className="text-burgundy drop-shadow-lg">LOVELL</span>
             </h1>
 
             <div className="mt-6 md:mt-8 flex flex-col sm:flex-row flex-wrap gap-x-8 gap-y-1 sm:gap-y-2 text-beige-200 text-sm sm:text-base">

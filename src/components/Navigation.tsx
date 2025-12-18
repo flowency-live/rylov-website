@@ -122,40 +122,58 @@ export default function Navigation() {
         </div>
 
         {/* Mobile Menu */}
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ${
-            isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="py-6 flex flex-col gap-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={`nav-link text-lg ${
-                  pathname === item.href ? "text-burgundy" : ""
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="flex items-center gap-6 pt-4 border-t border-grey-300 mt-2">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-grey-500 hover:text-burgundy transition-colors"
-                  aria-label={link.label}
+        {isMobileMenuOpen && (
+          <div className="md:hidden fixed inset-0 top-0 left-0 bg-grey-900 z-40">
+            <div className="flex flex-col h-full px-6 py-4">
+              <div className="flex items-center justify-between mb-8">
+                <Link
+                  href="/"
+                  className="font-display text-2xl tracking-tight text-beige-50"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {link.icon}
-                </a>
-              ))}
+                  RHYAN LOVELL
+                </Link>
+                <button
+                  className="text-beige-50 p-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="square" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div className="flex flex-col gap-6">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className={`font-display text-2xl uppercase tracking-wide ${
+                      pathname === item.href ? "text-burgundy" : "text-beige-50 hover:text-gold"
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="flex items-center gap-6 pt-8 mt-auto border-t border-grey-700">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-beige-200 hover:text-gold transition-colors"
+                    aria-label={link.label}
+                  >
+                    {link.icon}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );
